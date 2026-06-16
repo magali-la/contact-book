@@ -54,7 +54,16 @@ def view_contacts():
         # end with return so it goes back to the menu loop
         return
     else:
-        print(contacts)
+        # print it in a pretty manner - loop through the contacts and print them out
+        for contact, numbers in contacts.items():
+            # capitalize in case user puts lowercase
+            # join the number strings with a comma
+            print(f"{contact.capitalize()} | Numbers: {', '.join(numbers)}")
+
+        # now ask them to confirm to go back
+        go_back = input("Press 'M' to go back to Menu: ")
+        if go_back == 'M' or go_back == "m":
+            return
 
 # the while loop needs to keep going until the user picks 5, so the condition can just be true - menu should open up always after a helper is finished
 while True:
