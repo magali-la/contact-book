@@ -27,7 +27,14 @@ def add_contact():
 
     # otherwise run this loop to add numbers
     while is_done_adding == False:
-        contact_number = input("Add a number: ")
+        contact_number = input("Add a number with no dashes eg. 1234: ")
+
+        # check if it's only digits since special characters aren't allowed in v1
+        if not contact_number.isdigit():
+            print("Invalid format. Must contain no letter, spaces or special character.")
+            # continue to keep the loop going since the flag hasn't been hit
+            continue
+
 
         # append it to the contact_arr
         contact_arr.append(contact_number)
