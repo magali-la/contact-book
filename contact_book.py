@@ -78,6 +78,21 @@ def search_contact():
         print(f"No contacts found for {search_term}.")
         input("Press enter to go back to menu: ")
 
+# delete a contact - just check that it exists in there
+def delete_contact():
+    # capitalize it to normalize the case for checking
+    delete_term = input("Put a name of a contact you want to remove: ").capitalize()
+
+    # check if it's in the dict
+    if delete_term in contacts:
+        # delete it
+        del contacts[delete_term]
+        print(f"Contact deleted for {delete_term}.")
+        input("Press enter to return to menu: ")
+    else: 
+        print(f"No contact found for {delete_term}.")
+        input("Press enter to return to menu: ")
+
 # the while loop needs to keep going until the user picks 5, so the condition can just be true - menu should open up always after a helper is finished
 while True:
     try:
@@ -102,8 +117,8 @@ while True:
         view_contacts()
     elif menu_num == 3:
         search_contact()
-    # elif menu_num == 4:
-    #     delete_contact()
+    elif menu_num == 4:
+        delete_contact()
     else:
         print("Exiting contact book.")
         break
