@@ -1,5 +1,58 @@
 # contact book script with multiple options to edit or view it
 
+# REFLECTIONS
+# This project was a test of being able to manage user input, validate it, and handle errors for a contact book. One of the big challenges at the start was figuring out how to keep the menu popping up until a user explicitly exits, so I went with using a while loop. I also decided to have a multi-number contact style which required appending the value array. For the user experince, I decided to include an input so the user can choose when to go to the menu instead of returning immediately after an action is completed. Another UX feature is formatting the text for the contacts using f string notation and inputting variables. Lastly, on feature I had was case normalization to ensure no matter the case a user inputs, it will always be stored capitlized. This made it easier to do lookups and comparison of input converted to the dictionary
+
+# Output Logs - examples of input
+# ADD
+# case normalization + invalid number + additional numbers to add
+    # You're adding a contact
+    # Write a name: mARk
+    # Add a number with no dashes eg. 1234: idij
+    # Invalid format. Must contain no letter, spaces or special character.
+    # Add a number with no dashes eg. 1234: 3984
+    # Do you have more contacts for this person? (Y/N): Y
+    # Add a number with no dashes eg. 1234: 92838
+    # Do you have more contacts for this person? (Y/N): N
+    # Contact added for Mark.
+
+# VIEW ALL
+    # Enter your choice (1-5): 2
+    # Bob | Numbers: 1234, 2983
+    # Belle | Numbers: 1092
+    # Olivia | Numbers: 2983, 2904, 9390
+    # Mark | Numbers: 3984, 92838
+    # Press 'M' to go back to Menu: m
+
+# SEARCH
+# successful search 
+    # Input a name to look up: Tina
+    # Tina | Numbers: 1234, 5678
+    # Press enter to go back to menu: 
+# case normalization
+    # Enter your choice (1-5): 3
+    # Input a name to look up: bob 
+    # Bob | Numbers: 1234, 2983
+    # Press any key to go back to menu: 
+
+# name not found
+    # Enter your choice (1-5): 3
+    # Input a name to look up: okosk
+    # No contacts found for Okosk.
+    # Press any key to go back to menu: 
+
+# DELETE
+# deletion with case normlization
+    # Enter your choice (1-5): 4
+    # Put a name of a contact you want to remove: bOb
+    # Contact deleted for Bob.
+    # Press enter to return to menu: 
+
+# EXIT
+    # Enter your choice (1-5): 5
+    # Exiting contact book.
+
+
 # contacts dictionary with some starter contacts
 contacts = {
     "Bob": ["1234", "2983"],
