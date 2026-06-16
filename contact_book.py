@@ -16,7 +16,8 @@ def add_contact():
     # flag for if they are done or not
     is_done_adding = False
 
-    contact_name = input("Write a name: ")
+    # normalize it upon entry in capital case
+    contact_name = input("Write a name: ").capitalize()
 
     # if the contact is in the dict, then stop this function, they'll have to go back to the menu
     if contact_name in contacts:
@@ -42,7 +43,7 @@ def add_contact():
             contacts[contact_name] = contact_arr
 
             # success message
-            print(f"Contact added for {contact_name}.")
+            print(f"Contact added for {contact_name.capitalize()}.")
 
             # go back to the menu and break this loop
             break
@@ -64,6 +65,18 @@ def view_contacts():
         go_back = input("Press 'M' to go back to Menu: ")
         if go_back == 'M' or go_back == "m":
             return
+
+# search for contact - exact matches only
+def search_contact():
+    # ask user for name - normlize the case to capitalize to make checking easier
+    search_term = input("Input a name to look up: ").capitalize() 
+    
+    if search_term in contacts:
+        print(f"{search_term} | Numbers: {', '.join(contacts[search_term])}")
+        input("Press enter to go back to menu: ")
+    else:
+        print(f"No contacts found for {search_term}.")
+        input("Press enter to go back to menu: ")
 
 # the while loop needs to keep going until the user picks 5, so the condition can just be true - menu should open up always after a helper is finished
 while True:
@@ -87,8 +100,8 @@ while True:
         add_contact()
     elif menu_num == 2:
         view_contacts()
-    # elif menu_num == 3:
-    #     search_contact()
+    elif menu_num == 3:
+        search_contact()
     # elif menu_num == 4:
     #     delete_contact()
     else:
